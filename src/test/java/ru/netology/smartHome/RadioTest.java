@@ -164,32 +164,32 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-     @Test   // для громкости 0 -
-     public void shouldDecreaseVolumeBelowMin() {
-         Radio radio = new Radio();
+    @Test   // для громкости 0 -
+    public void shouldDecreaseVolumeBelowMin() {
+        Radio radio = new Radio();
 
-         radio.setCurrentVolume(0);
+        radio.setCurrentVolume(0);
 
-         radio.decreaseVolume();
+        radio.decreaseVolume();
 
-         int expected = 0;
-         int actual = radio.getCurrentVolume();
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
 
-         Assertions.assertEquals(expected, actual);
-     }
+        Assertions.assertEquals(expected, actual);
+    }
 
-     @Test   // для громкости 100 +
-     public void shouldIncreaseVolumeAboveMax() {
-         Radio radio = new Radio();
+    @Test   // для громкости 100 +
+    public void shouldIncreaseVolumeAboveMax() {
+        Radio radio = new Radio();
 
-         radio.setCurrentVolume(100);
+        radio.setCurrentVolume(100);
 
-         radio.increaseVolume();
+        radio.increaseVolume();
 
-         int expected = 100;
-         int actual = radio.getCurrentVolume();
+        int expected = 100;
+        int actual = radio.getCurrentVolume();
 
-         Assertions.assertEquals(expected, actual);
-     }
+        Assertions.assertEquals(expected, actual);
+    }
 
 }

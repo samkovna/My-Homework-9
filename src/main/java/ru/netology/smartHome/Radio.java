@@ -29,17 +29,19 @@ public class Radio {
     }
 
     public void next() {
-        if (currentStation + 1 > maxStation)
+        if (currentStation + 1 > maxStation) {
             currentStation = 0;
-
-        else currentStation++;
+        } else {
+            currentStation++;
+        }
     }
 
     public void prev() {
-        if (currentStation - 1 < minStation)
+        if (currentStation - 1 < minStation) {
             currentStation = 9;
-
-        else currentStation--;
+        } else {
+            currentStation--;
+        }
     }
 
 
