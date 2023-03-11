@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    Radio radio = new Radio();
 
     @Test   // для станции средней
     public void shouldSetStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(7);
 
@@ -19,7 +19,6 @@ public class RadioTest {
 
     @Test   // для станции выше диапазона
     public void shouldNotSetStationAboveMax() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(22);
 
@@ -32,7 +31,6 @@ public class RadioTest {
 
     @Test   // для станции ниже диапазона
     public void shouldNotSetStationBelowMin() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(-5);
 
@@ -44,7 +42,6 @@ public class RadioTest {
 
     @Test   // для станции средней +
     public void shouldNextStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(6);
 
@@ -58,7 +55,6 @@ public class RadioTest {
 
     @Test   // для станции средней -
     public void shouldPrevStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(4);
 
@@ -72,7 +68,6 @@ public class RadioTest {
 
     @Test   // для станции 9 +
     public void shouldNextStationAboveMax() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(9);
 
@@ -86,7 +81,6 @@ public class RadioTest {
 
     @Test   // для станции 0 -
     public void shouldNextStationBelowMin() {
-        Radio radio = new Radio();
 
         radio.setCurrentStation(0);
 
@@ -100,7 +94,6 @@ public class RadioTest {
 
     @Test   // для установки средней громкости
     public void shouldSetVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(40);
 
@@ -112,7 +105,6 @@ public class RadioTest {
 
     @Test   // для установки громкости выше 100
     public void shouldNotSetVolumeAboveMax() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(90);
         radio.setCurrentVolume(150);
@@ -125,7 +117,6 @@ public class RadioTest {
 
     @Test   // для установки громкости ниже 0
     public void shouldNotSetVolumeBelowMin() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(5);
         radio.setCurrentVolume(-10);
@@ -138,7 +129,6 @@ public class RadioTest {
 
     @Test   // для прибавления громкости
     public void shouldIncreaseVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(35);
 
@@ -152,7 +142,6 @@ public class RadioTest {
 
     @Test   // для уменьшения громкости
     public void shouldDecreaseVolume() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(76);
 
@@ -166,7 +155,6 @@ public class RadioTest {
 
     @Test   // для громкости 0 -
     public void shouldDecreaseVolumeBelowMin() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(0);
 
@@ -180,7 +168,6 @@ public class RadioTest {
 
     @Test   // для громкости 100 +
     public void shouldIncreaseVolumeAboveMax() {
-        Radio radio = new Radio();
 
         radio.setCurrentVolume(100);
 
@@ -190,6 +177,39 @@ public class RadioTest {
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test  // заданное количество станций в диапазоне
+    public void setQuantityStations() {
+        Radio radio = new Radio(7);
+
+        radio.setCurrentStation(4);
+
+        Assertions.assertEquals(0, radio.getMinStation());
+        Assertions.assertEquals(6, radio.getMaxStation());
+        Assertions.assertEquals(4, radio.getCurrentStation());
+    }
+
+    @Test  // заданное количество станций более 10
+    public void setQuantityStationsAboveMax() {
+        Radio radio = new Radio(15);
+
+        radio.setCurrentStation(8);
+
+        Assertions.assertEquals(0, radio.getMinStation());
+        Assertions.assertEquals(9, radio.getMaxStation());
+        Assertions.assertEquals(8, radio.getCurrentStation());
+    }
+    @Test  // установить максимальную громкость
+    public void setMaxVolume() {
+
+        Assertions.assertEquals(100, radio.getMaxVolume());
+    }
+
+    @Test  // установить минимальную громкость
+    public void setMinVolume() {
+
+        Assertions.assertEquals(0, radio.getMinVolume());
     }
 
 }
